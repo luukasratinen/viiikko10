@@ -3,8 +3,8 @@ package com.example.androidohjelma2;
 import java.util.ArrayList;
 
 public class UserStorage {
-
     private ArrayList<User> userList;
+
     private static UserStorage instance;
 
     private UserStorage() {
@@ -22,7 +22,7 @@ public class UserStorage {
         userList.add(user);
     }
 
-    public ArrayList<User> getUserList() {
-        return new ArrayList<>(userList);
+    public ArrayList<User> getUsers() {
+        return userList;
     }
 }

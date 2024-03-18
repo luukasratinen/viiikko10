@@ -16,13 +16,13 @@ public class ListUserInRecycleViewActivity extends AppCompatActivity {
 
         RecyclerView recyclerView = findViewById(R.id.rvUserView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new UserListAdapter(this, UserStorage.getInstance().getUserList());
+        adapter = new UserListAdapter(this, UserStorage.getInstance().getUsers());
         recyclerView.setAdapter(adapter);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        adapter.updateUserList(UserStorage.getInstance().getUserList());
+        adapter.updateUserList(UserStorage.getInstance().getUsers());
     }
 }
