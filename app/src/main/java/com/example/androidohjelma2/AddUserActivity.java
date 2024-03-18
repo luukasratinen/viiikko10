@@ -25,6 +25,7 @@ public class AddUserActivity extends AppCompatActivity {
         editLastName = findViewById(R.id.editLastName);
         editEmail = findViewById(R.id.editEmail);
         radioDegreeProgram = findViewById(R.id.radioDegreeProgram);
+
     }
 
 
@@ -46,6 +47,7 @@ public class AddUserActivity extends AppCompatActivity {
         User user = new User(firstName, lastName, email, degreeProgram);
 
         UserStorage.getInstance().addUser(user);
+
         finish(); //toimiskohan tää
 
 
