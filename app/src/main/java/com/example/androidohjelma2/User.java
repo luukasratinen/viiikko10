@@ -1,7 +1,7 @@
 package com.example.androidohjelma2;
 
-
 public class User {
+
     private String firstName;
     private String lastName;
     private String email;
@@ -12,8 +12,6 @@ public class User {
         this.lastName = lastName;
         this.email = email;
         this.degreeProgram = degreeProgram;
-
-
     }
 
     public String getFirstName() {
@@ -23,14 +21,12 @@ public class User {
     public String getLastName() {
         return lastName;
     }
+
     public String getEmail() {
         return email;
-
     }
 
     public String getDegreeProgram() {
         return degreeProgram;
-
     }
-
 }
