@@ -5,9 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+
+
 public class ListUserInRecycleViewActivity extends AppCompatActivity {
 
+
     private UserListAdapter adapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,9 +24,12 @@ public class ListUserInRecycleViewActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
     }
 
+
     @Override
     protected void onResume() {
+
         super.onResume();
+        //toimiskohan tää täs
         adapter.updateUserList(UserStorage.getInstance().getUsers());
     }
 }
