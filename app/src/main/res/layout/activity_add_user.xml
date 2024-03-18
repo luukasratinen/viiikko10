@@ -23,25 +23,25 @@
             android:id="@+id/seRadioButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Software engineering" />
+            android:text="Software Engineering" />
 
         <RadioButton
             android:id="@+id/imRadioButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Industrial management" />
+            android:text="Industrial Management" />
 
         <RadioButton
             android:id="@+id/ceRadioButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Computational engineering" />
+            android:text="Computational Engineering" />
 
         <RadioButton
             android:id="@+id/eeRadioButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Electrical engineering" />
+            android:text="Electrical Engineering" />
     </RadioGroup>
 
     <Button
