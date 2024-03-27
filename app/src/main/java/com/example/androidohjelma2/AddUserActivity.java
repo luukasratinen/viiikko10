@@ -35,7 +35,6 @@ public class AddUserActivity extends AppCompatActivity {
         User user = new User(firstName, lastName, email, degreeProgram);
         UserStorage.getInstance().addUser(user);
 
-        // Tallenna käyttäjälista automaattisesti
         UserStorage.getInstance().saveUsers(getApplicationContext());
 
         Intent intent = new Intent(this, MainActivity.class);

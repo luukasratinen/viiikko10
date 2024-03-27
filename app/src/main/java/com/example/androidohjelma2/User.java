@@ -3,6 +3,7 @@ package com.example.androidohjelma2;
 public class User {
 
     private String firstName;
+
     private String lastName;
     private String email;
     private String degreeProgram;
@@ -12,7 +13,9 @@ public class User {
         this.lastName = lastName;
         this.email = email;
         this.degreeProgram = degreeProgram;
+
     }
+
 
     public String getFirstName() {
         return firstName;

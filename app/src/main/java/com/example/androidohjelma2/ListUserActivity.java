@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
-import java.util.Collections;
+
 
 public class ListUserActivity extends AppCompatActivity {
 
@@ -19,10 +19,7 @@ public class ListUserActivity extends AppCompatActivity {
         RecyclerView recyclerView = findViewById(R.id.rvUserView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        // Lataa käyttäjälista automaattisesti
         UserStorage.getInstance().loadUsers(getApplicationContext());
-
-        // Haetaan käyttäjät sukunimen mukaan aakkosjärjestyksessä
         ArrayList<User> sortedUsers = UserStorage.getInstance().getUsersByLastName();
 
         adapter = new UserListAdapter(this, sortedUsers);
