@@ -1,7 +1,6 @@
 package com.example.androidohjelma2;
 
 import android.content.Context;
-
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -55,11 +54,7 @@ public class UserStorage {
             userList = (ArrayList<User>) objectInputStream.readObject();
             objectInputStream.close();
             fileInputStream.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
     }

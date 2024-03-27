@@ -5,8 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-
-
 public class ListUserActivity extends AppCompatActivity {
 
     private UserListAdapter adapter;
@@ -27,7 +25,6 @@ public class ListUserActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        //toimiskohan tää täs
         adapter.updateUserList(UserStorage.getInstance(getApplicationContext()).getUsers());
     }
 }

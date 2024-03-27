@@ -7,6 +7,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
+
+
 public class AddUserActivity extends AppCompatActivity {
 
     private TextView editFirstName, editLastName, editEmail;
@@ -32,7 +34,7 @@ public class AddUserActivity extends AppCompatActivity {
         String degreeProgram = selectedRadioButton.getText().toString();
         User user = new User(firstName, lastName, email, degreeProgram);
 
-        UserStorage.getInstance(getApplicationContext()).addUser(getApplicationContext(), user);
+        UserStorage.getInstance(getApplicationContext()).addUser(this, user);
 
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
