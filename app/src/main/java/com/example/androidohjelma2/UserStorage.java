@@ -8,8 +8,11 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class UserStorage {
+
     private ArrayList<User> userList;
     private static UserStorage instance;
     private static final String FILENAME = "users.data";
@@ -35,6 +38,17 @@ public class UserStorage {
         return userList;
     }
 
+    public ArrayList<User> getUsersByLastName() {
+        ArrayList<User> sortedUsers = new ArrayList<>(userList);
+        Collections.sort(sortedUsers, new Comparator<User>() {
+            @Override
+            public int compare(User user1, User user2) {
+                return user1.getLastName().compareTo(user2.getLastName());
+            }
+        });
+        return sortedUsers;
+    }
+
     private void saveUsers(Context context) {
         try {
             FileOutputStream fileOutputStream = context.openFileOutput(FILENAME, Context.MODE_PRIVATE);
@@ -54,7 +68,11 @@ public class UserStorage {
             userList = (ArrayList<User>) objectInputStream.readObject();
             objectInputStream.close();
             fileInputStream.close();
-        } catch (IOException | ClassNotFoundException e) {
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
     }

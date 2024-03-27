@@ -17,7 +17,7 @@ public class ListUserActivity extends AppCompatActivity {
         RecyclerView recyclerView = findViewById(R.id.rvUserView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        adapter = new UserListAdapter(this, UserStorage.getInstance(getApplicationContext()).getUsers());
+        adapter = new UserListAdapter(this, UserStorage.getInstance(getApplicationContext()).getUsersByLastName());
 
         recyclerView.setAdapter(adapter);
     }
@@ -25,6 +25,6 @@ public class ListUserActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        adapter.updateUserList(UserStorage.getInstance(getApplicationContext()).getUsers());
+        adapter.updateUserList(UserStorage.getInstance(getApplicationContext()).getUsersByLastName());
     }
 }
