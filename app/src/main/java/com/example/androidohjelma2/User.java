@@ -9,6 +9,9 @@ package com.example.androidohjelma2;
         private String email;
         private String degreeProgram;
 
+
+
+
         public User(String firstName, String lastName, String email, String degreeProgram) {
             this.firstName = firstName;
             this.lastName = lastName;

@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class UserListAdapter extends RecyclerView.Adapter<UserViewHolder> {
 
 
-    private Context context;
+    private final Context context;
     private ArrayList<User> users;
 
 
