@@ -9,9 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class ListUserActivity extends AppCompatActivity {
 
-
     private UserListAdapter adapter;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,16 +18,16 @@ public class ListUserActivity extends AppCompatActivity {
 
         RecyclerView recyclerView = findViewById(R.id.rvUserView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new UserListAdapter(this, UserStorage.getInstance().getUsers());
+
+        adapter = new UserListAdapter(this, UserStorage.getInstance(getApplicationContext()).getUsers());
+
         recyclerView.setAdapter(adapter);
     }
 
-
     @Override
     protected void onResume() {
-
         super.onResume();
         //toimiskohan tää täs
-        adapter.updateUserList(UserStorage.getInstance().getUsers());
+        adapter.updateUserList(UserStorage.getInstance(getApplicationContext()).getUsers());
     }
 }
