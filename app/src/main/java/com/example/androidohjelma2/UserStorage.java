@@ -1,6 +1,7 @@
 package com.example.androidohjelma2;
 
 import android.content.Context;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -38,20 +39,18 @@ public class UserStorage {
         return userList;
     }
 
-    public void listUsers() {
-        int i = 0;
-        for (User user : userList) {
-            System.out.println(i++ + ": " + user.getLastName());
-        }
+    public ArrayList<User> getUsersByLastName() {
+        ArrayList<User> sortedUsers = new ArrayList<>(userList);
+        sortedUsers.sort(new Comparator<User>() {
+            @Override
+            public int compare(User user1, User user2) {
+                return user1.getLastName().compareTo(user2.getLastName());
+            }
+        });
+        return sortedUsers;
     }
 
-    public void listUsersInformation() {
-        for (User user : userList) {
-            System.out.println(user.toString());
-        }
-    }
-
-    public void saveUsers(Context context) {
+    private void saveUsers(Context context) {
         try {
             FileOutputStream fileOutputStream = context.openFileOutput(FILENAME, Context.MODE_PRIVATE);
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
@@ -63,7 +62,7 @@ public class UserStorage {
         }
     }
 
-    public void loadUsers(Context context) {
+    private void loadUsers(Context context) {
         try {
             FileInputStream fileInputStream = context.openFileInput(FILENAME);
             ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
@@ -77,15 +76,5 @@ public class UserStorage {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-    }
-
-    public ArrayList<User> getUsersByLastName() {
-        Collections.sort(userList, new Comparator<User>() {
-            @Override
-            public int compare(User user1, User user2) {
-                return user1.getLastName().compareTo(user2.getLastName());
-            }
-        });
-        return userList;
     }
 }

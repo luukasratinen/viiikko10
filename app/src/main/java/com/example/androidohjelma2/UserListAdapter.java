@@ -1,22 +1,22 @@
 package com.example.androidohjelma2;
 
-
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.ArrayList;
 
 public class UserListAdapter extends RecyclerView.Adapter<UserViewHolder> {
 
-
-    private final Context context;
+    private Context context;
     private ArrayList<User> users;
 
-
     public UserListAdapter(Context context, ArrayList<User> users) {
-
         this.context = context;
         this.users = users;
     }
@@ -24,21 +24,17 @@ public class UserListAdapter extends RecyclerView.Adapter<UserViewHolder> {
     public void updateUserList(ArrayList<User> users) {
         this.users = users;
         notifyDataSetChanged();
-
-
     }
 
-
-
+    @NonNull
     @Override
-    public UserViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new UserViewHolder(LayoutInflater.from(context).inflate(R.layout.userview, parent, false));
+    public UserViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(context).inflate(R.layout.userview, parent, false);
+        return new UserViewHolder(view);
     }
 
-
-
     @Override
-    public void onBindViewHolder( UserViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull UserViewHolder holder, int position) {
         User user = users.get(position);
         holder.FirstName.setText(user.getFirstName());
         holder.LastName.setText(user.getLastName());
@@ -46,13 +42,8 @@ public class UserListAdapter extends RecyclerView.Adapter<UserViewHolder> {
         holder.DegreeProgram.setText(user.getDegreeProgram());
     }
 
-
     @Override
     public int getItemCount() {
         return users.size();
-
     }
-
-
-
 }

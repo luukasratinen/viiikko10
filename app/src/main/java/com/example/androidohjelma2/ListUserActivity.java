@@ -7,24 +7,22 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class ListUserActivity extends AppCompatActivity {
 
-    private UserListAdapter adapter;
+        private UserListAdapter adapter;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_user_in_recycle_view);
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_list_user_in_recycle_view);
 
-        RecyclerView recyclerView = findViewById(R.id.rvUserView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+            RecyclerView recyclerView = findViewById(R.id.rvUserView);
+            recyclerView.setLayoutManager(new LinearLayoutManager(this));
+            adapter = new UserListAdapter(this, UserStorage.getInstance(this).getUsersByLastName());
+            recyclerView.setAdapter(adapter);
+        }
 
-        adapter = new UserListAdapter(this, UserStorage.getInstance(getApplicationContext()).getUsersByLastName());
-
-        recyclerView.setAdapter(adapter);
+        @Override
+        protected void onResume() {
+            super.onResume();
+            adapter.updateUserList(UserStorage.getInstance(this).getUsersByLastName());
+        }
     }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        adapter.updateUserList(UserStorage.getInstance(getApplicationContext()).getUsersByLastName());
-    }
-}
