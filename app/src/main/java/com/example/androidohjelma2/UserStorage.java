@@ -1,11 +1,9 @@
+
 package com.example.androidohjelma2;
 
 import android.content.Context;
-
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
@@ -22,17 +20,15 @@ public class UserStorage {
         userList = new ArrayList<>();
     }
 
-    public static synchronized UserStorage getInstance(Context context) {
+    public static synchronized UserStorage getInstance() {
         if (instance == null) {
             instance = new UserStorage();
-            instance.loadUsers(context);
         }
         return instance;
     }
 
-    public void addUser(Context context, User user) {
+    public void addUser(User user) {
         userList.add(user);
-        saveUsers(context);
     }
 
     public ArrayList<User> getUsers() {
@@ -50,30 +46,26 @@ public class UserStorage {
         return sortedUsers;
     }
 
-    private void saveUsers(Context context) {
+    public void saveUsers(Context context) {
         try {
             FileOutputStream fileOutputStream = context.openFileOutput(FILENAME, Context.MODE_PRIVATE);
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
             objectOutputStream.writeObject(userList);
             objectOutputStream.close();
             fileOutputStream.close();
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private void loadUsers(Context context) {
+    public void loadUsers(Context context) {
         try {
             FileInputStream fileInputStream = context.openFileInput(FILENAME);
             ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
             userList = (ArrayList<User>) objectInputStream.readObject();
             objectInputStream.close();
             fileInputStream.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

@@ -2,13 +2,8 @@ package com.example.androidohjelma2;
 
 import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.ArrayList;
 
 public class UserListAdapter extends RecyclerView.Adapter<UserViewHolder> {
@@ -26,15 +21,13 @@ public class UserListAdapter extends RecyclerView.Adapter<UserViewHolder> {
         notifyDataSetChanged();
     }
 
-    @NonNull
     @Override
-    public UserViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.userview, parent, false);
-        return new UserViewHolder(view);
+    public UserViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        return new UserViewHolder(LayoutInflater.from(context).inflate(R.layout.userview, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull UserViewHolder holder, int position) {
+    public void onBindViewHolder(UserViewHolder holder, int position) {
         User user = users.get(position);
         holder.FirstName.setText(user.getFirstName());
         holder.LastName.setText(user.getLastName());
